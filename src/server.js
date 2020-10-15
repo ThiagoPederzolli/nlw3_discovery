@@ -4,8 +4,10 @@ const path = require('path');
 
 server
 .use(express.static('public'))
+.set('views', path.join(__dirname, 'views'))
+.set('view engine', 'hbs')
 .get('/', (request, response) => {
-  return response.sendFile(path.join(__dirname, 'views', 'index.html'))
+  return response.render('index')
 });
 
 server.listen(5500);
